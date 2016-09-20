@@ -1,2 +1,2 @@
-# Casanova Renting
+# Casanova Renting Frontend
 Still under development
