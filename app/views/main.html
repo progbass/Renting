@@ -1,0 +1,55 @@
+<div class="wrapper">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1980 1178">
+		<defs>
+			<clipPath id="landingClipTop">
+				<rect id="landingClipRectTop" x="300" y="500" width="208" height="424"></rect>
+			</clipPath>
+		</defs>
+
+		<polygon fill="#053A59" points="363.998,943.277 349.76,965.234 335.521,943.277 324.795,943.277 349.76,981.775 374.725,943.277 
+			"></polygon>
+		<rect x="344.09" y="1001.881" fill="#053A59" width="11.339" height="177.006"></rect>
+
+		<g style="clip-path: url(#landingClipTop);">
+			<polygon fill="#FFF" points="363.998,943.277 349.76,965.234 335.521,943.277 324.795,943.277 349.76,981.775 374.725,943.277 
+			"></polygon>
+			<rect x="344.09" y="1001.881" fill="#FFF" width="11.339" height="177.006"></rect>
+		</g>
+	</svg>
+
+
+	<div class="holder" data-ng-click="homeCtrl.playVideo();">
+		<div class="circles"></div>
+		<h2><span>&iquest;Qu&eacute; es Leasing?</span></h2>
+	</div>
+
+
+
+
+	<div class="video_container">
+		<a ng-click="homeCtrl.closeVideo()" class='close_btn'>Cerrar</a>
+		<videogular vg-player-ready="homeCtrl.onPlayerReady($API)" vg-theme="homeCtrl.config.theme.url">
+			<vg-media vg-src="homeCtrl.config.sources"
+					vg-tracks="homeCtrl.config.tracks">
+			</vg-media>
+
+			<vg-controls>
+				<vg-play-pause-button></vg-play-pause-button>
+				<vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+				<vg-scrub-bar>
+					<vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+				</vg-scrub-bar>
+				<vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+				<vg-volume>
+					<vg-mute-button></vg-mute-button>
+					<vg-volume-bar></vg-volume-bar>
+				</vg-volume>
+				<vg-fullscreen-button></vg-fullscreen-button>
+			</vg-controls>
+ 
+			<vg-overlay-play></vg-overlay-play>
+			<vg-poster vg-url='homeCtrl.config.plugins.poster'></vg-poster>
+		</videogular>
+	</div>
+	
+</div>

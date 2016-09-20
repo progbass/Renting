@@ -1,0 +1,8 @@
+/node_modules
+/dist
+/.tmp
+/.sass-cache
+/test
+/bower_components
+Renting.sublime-project
+Renting.sublime-workspace

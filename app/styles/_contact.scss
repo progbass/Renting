@@ -1,0 +1,248 @@
+
+
+
+section#contact{
+  color: #fff;
+  background: $id_color3;
+
+
+
+  .slide{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    color: #fff;
+
+
+    &:nth-child(2){
+      position: absolute;
+      left: 100vw; top: 0;
+    }
+
+
+
+    ////////////////////////////
+    // FORM SLIDE
+    ////////////////////////////
+    &.form{
+
+      //
+      .icon{
+        color: #FFF;
+        text-transform: none;
+
+        p{
+          padding: 0;
+        }
+
+
+        //////////////////
+        // FROM
+        &.contact_form{
+          form{
+
+            .data_holder{
+              margin-bottom: .5em;
+            }
+
+
+            label{
+              position: absolute;
+              top: -9999px;
+              left: -9999px;
+            }
+
+            input{
+              @include placeholder {
+                color: darken($id_color, 10%);
+                padding-top: .4em;
+              }
+
+              &:focus{
+                @include placeholder {
+                  color: darken($id_color2, 12%);
+                }
+              }
+            }
+
+            input[type=text]{
+              width: 100%;
+              max-width: 100%;
+              padding: .5em .875em .4em;
+              border: 0;
+              margin: auto;
+              color: darken($id_color, 10%);
+              background: $id_color;
+              font-size: 1.8rem;
+              font-weight: 700;
+
+              @include transition(all .1s ease-out);
+
+
+              &:focus{
+                color: #fff;
+                background: $id_color2;
+                text-transform: uppercase;
+              }
+            }
+
+
+            input[type=submit]{
+              border: none;
+              padding: .3em .75em .2em;
+              background: $id_color2;
+              font-weight: 700;
+              font-size: 1.75rem;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+    ////////////////////////////
+    // FAQs
+    ////////////////////////////
+    &.faqs{
+      background: $id_color;
+      color: #FFF;
+
+      .icon{
+        color: #fff;
+        opacity: 1;
+        text-transform: none;
+
+        p{
+          padding: 0;
+          font-weight: 500;
+        }
+        
+
+        //////////////////
+        // TITLE
+        &.faqs_title{
+        }
+
+
+        //////////////////
+        // FAQS LIST
+        &.faqs_list{
+          ul{
+            margin: 0; padding: 0; border: none;
+            list-style: none;
+
+            li{
+              margin-bottom: .5em;
+              height: 7em;
+
+              p{
+                font-size: 1.5vw;
+              }
+
+              h4{
+                font-size: 1.875vw;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+
+  
+  
+  //---------------------------------------------------------//
+  // MEDIA QUERIES
+  //---------------------------------------------------------//
+  @media screen and ( min-width: $reference_desktop){
+    .slide{
+
+      &.form{
+        .icon{
+          position: absolute;
+
+          //////////////////
+          // INFO
+          &.contact_info{
+            width: percentage(840/$reference_width);
+            left: percentage(532/$reference_width);
+            top: percentage(290/$reference_height);
+          }
+
+
+          //////////////////
+          // FROM
+          &.contact_form{
+            @include clearfix();
+            width: percentage(1320/$reference_width);
+            left: percentage(532/$reference_width);
+            top: percentage(540/$reference_height);
+
+            form{
+              position: relative;
+              left: -.25em;
+
+              .data_holder{
+                float: left;
+                width: 50%;
+                padding: 0 .25em;
+
+                &.half{
+                  width: 25%;
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+
+      &.faqs{
+
+        .icon{
+          position: absolute;
+
+          //////////////////
+          // TITLE
+          &.faqs_title{
+            width: percentage(840/$reference_width);
+            left: percentage(532/$reference_width);
+            top: percentage(220/$reference_height);
+          }
+
+
+          //////////////////
+          // FAQS LIST
+          &.faqs_list{
+            width: percentage(1320/$reference_width);
+            left: percentage(532/$reference_width);
+            top: percentage(500/$reference_height);
+
+            ul{
+              @include clearfix();
+
+              li{
+                float: left;
+                width: 50%;
+
+                &:nth-child(odd){
+                  padding-right: .25em
+                }
+                &:nth-child(even){
+                  padding-left: .25em
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

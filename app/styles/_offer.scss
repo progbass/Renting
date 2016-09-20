@@ -1,0 +1,259 @@
+
+
+
+section#offer{
+  color: #fff;
+  background: $id_color2;
+
+
+
+  .slide{
+    width: 100vw;
+    height: 100vh;
+    top: -100vh;
+
+    &:nth-child(2){
+      position: relative;
+      left: 100vw; //top: -100vh;
+    }
+    &:nth-child(3){
+      position: relative;
+      left: 200vw; //top: -100vh;
+      top: -200vh;
+    }
+
+
+
+    ////////////////////////////
+    // SATISFACCIÓN
+    ////////////////////////////
+    &.satisfaccion{
+      
+      .icon{
+        color: #FFF;
+
+        ///////////////////
+        /// TITLE
+        &.title{
+          h3{
+            color: $id_color;
+          }
+        }
+
+        //////////////////
+        /// PERSONALIZADOS
+        &.personalizados{
+          p{
+            color: $id_color;
+          }
+        }
+
+
+        //////////////////
+        /// UNIDADES
+        &.unidades{
+          p{
+            color: $id_color;
+
+            strong{
+              color: #FFF;
+              text-transform: uppercase;
+            }
+          }
+
+          span{
+            font-weight: 700
+          }
+        }
+      }
+    }
+
+
+
+
+    ////////////////////////////
+    // DISPONIBILIDAD
+    ////////////////////////////
+    &.disponibilidad{
+      background: $id_color3;
+      color: #FFF;
+
+      .icon{
+        color: #fff;
+
+      }
+    }
+
+
+
+
+    ////////////////////////////
+    // LEASING
+    ////////////////////////////
+    &.leasing{
+      background: $id_color2;
+      color: #FFF;
+
+      .icon{
+        color: #fff;
+        cursor: pointer;
+
+
+        &.renta{
+          a{
+            color: #FFF;
+            text-transform: none;
+          }
+        }
+
+        &.leasing{
+          margin-top: 40px;
+          color: $id_color;
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+  //---------------------------------------------------------//
+  // MEDIA QUERIES
+  //---------------------------------------------------------//
+  @media screen and ( min-width: $reference_desktop){
+    .slide{
+
+      ////////////////////////////
+      // SATISFACCIÓN
+      ////////////////////////////
+      &.satisfaccion{
+
+        .icon{
+          position: absolute;
+
+          ///////////////////
+          /// TITLE
+          &.title{
+            left: percentage(530/$reference_width);
+            top: percentage(250/$reference_height);
+          }
+
+          ///////////////////
+          /// PERSONALIZADOS
+          &.personalizados{
+            left: percentage(530/$reference_width);
+            top: percentage(700/$reference_height);
+
+            h3{
+              font-size: 3.202247191vw;
+              display: block;
+              margin: .12em 0;
+              line-height: .875em;
+            }
+          }
+
+
+          ///////////////////
+          /// UNIDADES
+          &.unidades{
+            width: percentage(510/$reference_width);
+            left: percentage(530/$reference_width);
+            top: percentage(880/$reference_height);
+
+            span{
+              position: absolute;
+              left: 0; top: 8.5vh;
+              font-size: 6.202247191vw;
+            }
+
+            h3{
+              padding-left: 4.5vw;
+            }
+          }
+        }
+      }
+
+
+
+
+      ////////////////////////////
+      // DISPONIBILIDAD
+      ////////////////////////////
+      &.disponibilidad{
+
+        .icon{
+          position: absolute;
+          max-width: percentage(740/$reference_width);
+
+          h3{
+            margin: 0;
+          }
+          
+          ///////////////////
+          /// DISPONIBILIDAD
+          &.disponibilidad{
+            left: percentage(382/$reference_width);
+            top: percentage(410/$reference_height);
+          }
+
+          ///////////////////
+          /// CAPACIDAD
+          &.capacidad{
+            left: percentage(382/$reference_width);
+            top: percentage(650/$reference_height);
+          }
+
+          ///////////////////
+          /// PRECIO
+          &.precio{
+            left: percentage(1147/$reference_width);
+            top: percentage(410/$reference_height);
+          }
+
+          ///////////////////
+          /// FLEXIBILIDAD
+          &.flexibilidad{
+            left: percentage(1147/$reference_width);
+            top: percentage(650/$reference_height);
+          }
+        }
+      }
+
+
+
+      ////////////////////////////
+      // LEASING
+      ////////////////////////////
+      &.leasing{
+
+        .icon{
+          position: absolute;
+
+          ///////////////////
+          /// LEASING
+          &.leasing{
+            left: percentage(530/$reference_width);
+            top: percentage(200/$reference_height);
+          }
+
+          ///////////////////
+          /// SERVICE
+          &.service{
+            left: percentage(960/$reference_width);
+            top: percentage(700/$reference_height);
+          }
+
+          ///////////////////
+          /// RENTA
+          &.renta{
+            line-height: 1.1em;
+            left: percentage(1366/$reference_width);
+            top: percentage(410/$reference_height);
+          }
+        }
+      }
+    }
+  }
+}

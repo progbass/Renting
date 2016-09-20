@@ -1,0 +1,121 @@
+
+
+
+section#leasing{
+  color: #fff;
+  background: $id_color;
+
+
+
+  .slide{
+    width: 100vw;
+    height: 100vh;
+    top: -100vh;
+
+    &:nth-child(2){
+      position: relative;
+      left: 100vw; //top: -100vh;
+    }
+
+
+    ////////////////////////////
+    // LEASING
+    ////////////////////////////
+    &.leasing{
+
+      .icon{
+        color: #fff;
+
+
+        ///////////////////
+        /// LEASING
+        &.leasing{
+          padding-left: 0;
+        }
+
+        ///////////////////
+        /// UNIDADES
+        &.unidades{
+          span{
+            font-weight: 700
+          }
+        }
+
+        &.nav{
+          font-size: 1.25vw;
+
+          a{
+            color: #0081C9;
+          }
+        }
+      }
+    }
+
+
+
+
+    ////////////////////////////
+    // FSL
+    ////////////////////////////
+    &.fsl{
+      background: $id_color3;
+      color: #FFF;
+
+      .icon{
+      }
+    }
+  }
+
+
+
+
+
+
+  //---------------------------------------------------------//
+  // MEDIA QUERIES
+  //---------------------------------------------------------//
+  @media screen and ( min-width: $reference_desktop ){
+    .slide{
+
+      ////////////////////////////
+      // LEASING
+      ////////////////////////////
+      &.leasing{
+
+        .icon{
+          position: absolute;
+
+          &.leasing{
+            left: percentage(545/$reference_width);
+            top: percentage(270/$reference_height);
+          }
+
+          &.seguro{
+            left: percentage(545/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.kms{
+            left: percentage(1120/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.tramites{
+            left: percentage(1580/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.nav{
+            right: 0;
+            bottom: 4vh;
+
+            a{
+              display: block;
+              line-height: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
