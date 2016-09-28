@@ -63,11 +63,6 @@
           });
     }
 
-    $('header a').click(function(_e){
-      var target = ($(this).attr('href').substr(2));
-      anchorScroll( $(this), $("#"+target), 600, 450 );
-      //$(window).scrollTo($(this).attr('href'), 800, {easing: 'easeInOutSine'});
-    });
 
 })();
 
@@ -81,6 +76,7 @@ function anchorScroll(this_obj, that_obj, base_speed, _offset) {
  
   var speed       = (offset_diff * base_speed) / 1200;
  
+
   $('html,body').animate({
       scrollTop: that_offset.top + offet
     },

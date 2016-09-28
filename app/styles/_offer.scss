@@ -28,6 +28,12 @@ section#offer{
     // SATISFACCIÓN
     ////////////////////////////
     &.satisfaccion{
+
+      .svg_holder{
+        position: absolute;
+        width: 100vw;
+      }
+
       
       .icon{
         color: #FFF;
@@ -78,6 +84,17 @@ section#offer{
       background: $id_color3;
       color: #FFF;
 
+      .svg_top{
+        position: absolute;
+        width: 100vw;
+      }
+
+      .svg_bottom{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      }
+
       .icon{
         color: #fff;
 
@@ -94,15 +111,40 @@ section#offer{
       background: $id_color2;
       color: #FFF;
 
+      .svg_bottom{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      }
+
       .icon{
         color: #fff;
         cursor: pointer;
 
 
         &.renta{
+
+
+          span{
+            //@include vertical-align();
+            position: absolute;
+            left: 0; 
+            font-size: 3.2em;
+            font-weight: 500;
+            letter-spacing: -.3em;
+            line-height: .875em;
+          }
+
+
           a{
+            display: inline-block;
+            padding-left: 2.875em;
             color: #FFF;
             text-transform: none;
+
+            &:hover{
+              text-decoration: none;
+            }
           }
         }
 
@@ -141,10 +183,17 @@ section#offer{
           }
 
           ///////////////////
+          /// SUBTITLE
+          &.subtitle {
+            right: percentage(185/$reference_width);
+            top: percentage(576/$reference_height);
+          }
+
+          ///////////////////
           /// PERSONALIZADOS
           &.personalizados{
             left: percentage(530/$reference_width);
-            top: percentage(700/$reference_height);
+            top: percentage(660/$reference_height);
 
             h3{
               font-size: 3.202247191vw;
@@ -160,16 +209,12 @@ section#offer{
           &.unidades{
             width: percentage(510/$reference_width);
             left: percentage(530/$reference_width);
-            top: percentage(880/$reference_height);
+            top: percentage(810/$reference_height);
 
             span{
               position: absolute;
-              left: 0; top: 8.5vh;
+              left: 0; top: .69em;
               font-size: 6.202247191vw;
-            }
-
-            h3{
-              padding-left: 4.5vw;
             }
           }
         }
@@ -235,7 +280,7 @@ section#offer{
           /// LEASING
           &.leasing{
             left: percentage(530/$reference_width);
-            top: percentage(200/$reference_height);
+            top: percentage(160/$reference_height);
           }
 
           ///////////////////

@@ -25,6 +25,11 @@ section#contact{
     // FORM SLIDE
     ////////////////////////////
     &.form{
+      .svg_holder{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      }
 
       //
       .icon{
@@ -54,8 +59,9 @@ section#contact{
 
             input{
               @include placeholder {
-                color: darken($id_color, 10%);
-                padding-top: .4em;
+                color: #fff;
+                padding-top: .2em;
+                @include transition(all .1s ease-out);
               }
 
               &:focus{
@@ -71,7 +77,7 @@ section#contact{
               padding: .5em .875em .4em;
               border: 0;
               margin: auto;
-              color: darken($id_color, 10%);
+              color: #fff;//darken($id_color, 10%);
               background: $id_color;
               font-size: 1.8rem;
               font-weight: 700;
@@ -89,7 +95,7 @@ section#contact{
 
             input[type=submit]{
               border: none;
-              padding: .3em .75em .2em;
+              padding: .7em 1.25em .55em;
               background: $id_color2;
               font-weight: 700;
               font-size: 1.75rem;
@@ -172,7 +178,7 @@ section#contact{
           &.contact_info{
             width: percentage(840/$reference_width);
             left: percentage(532/$reference_width);
-            top: percentage(290/$reference_height);
+            top: percentage(340/$reference_height);
           }
 
 

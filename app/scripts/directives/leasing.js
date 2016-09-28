@@ -71,22 +71,32 @@ angular.module('app')
               if(position.percentage >= .12){
                 var checkpoint = (angular.element(el).prop('offsetHeight') * .12);
                 var diff =  position.amount - checkpoint;
-                var leftbar = angular.element('#leasing_1clipRight1_rect');
-                var rightbar = angular.element('#leasing_1clipRight2_rect');
+
+                var leftbar_leasing = angular.element('#leasing_1clipRight1_rect');
+                var rightbar_leasing = angular.element('#leasing_1clipRight2_rect');
+                var leftbar_fsl = angular.element('#leasing_2clipRight1_rect');
+                var rightbar_fsl = angular.element('#leasing_2clipRight2_rect');
+
                 var left_pos = (barH_1top_init - diff);
                 var right_pos = (barH_1bottom_init + diff);
 
                 left_pos = left_pos < 537 ? 537 : left_pos;
                 right_pos = right_pos > 1256 ? 1256 : right_pos;
 
-                leftbar[0].setAttribute('x',  left_pos);
-                rightbar[0].setAttribute('x',  right_pos);
+                leftbar_leasing[0].setAttribute('x',  left_pos);
+                rightbar_leasing[0].setAttribute('x',  right_pos);
+                leftbar_fsl[0].setAttribute('x',  left_pos);
+                rightbar_fsl[0].setAttribute('x',  right_pos);
               } else {
-                var leftbar = angular.element('#leasing_1clipRight1_rect');
-                var rightbar = angular.element('#leasing_1clipRight2_rect');
+                var leftbar_leasing = angular.element('#leasing_1clipRight1_rect');
+                var rightbar_leasing = angular.element('#leasing_1clipRight2_rect');
+                var leftbar_fsl = angular.element('#leasing_2clipRight1_rect');
+                var rightbar_fsl = angular.element('#leasing_2clipRight2_rect');
 
-                leftbar[0].setAttribute('x',  barH_1top_init);
-                rightbar[0].setAttribute('x',  barH_1bottom_init);
+                leftbar_leasing[0].setAttribute('x',  barH_1top_init);
+                rightbar_leasing[0].setAttribute('x',  barH_1bottom_init);
+                leftbar_fsl[0].setAttribute('x',  barH_1bottom_init);
+                rightbar_fsl[0].setAttribute('x',  barH_1bottom_init);
               } 
 
               if(position.percentage >= .14){

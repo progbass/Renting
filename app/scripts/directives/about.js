@@ -19,7 +19,7 @@ angular.module('app')
 
           var topbar_init = parseInt($('#aboutClipRectTop')[0].getAttribute('y'), 10);
           var rightbar_init = parseInt($('#aboutClipRectRight')[0].getAttribute('x'), 10);
-          var topbar2_init = parseInt($('#aboutClipRectTop')[0].getAttribute('y'), 10);
+          var topbar2_init = parseInt($('#about2ClipRectTop')[0].getAttribute('y'), 10);
           var rightbar2_init = parseInt($('#about2ClipRectRight')[0].getAttribute('x'), 10);
           var draw = function(position){
             //console.log(position.amount+'    '+position.percentage)

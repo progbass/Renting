@@ -36,7 +36,7 @@ angular.module('app')
           var heightbar_bottom2_init = parseInt($('#offer_2clipBottom2_rect')[0].getAttribute('y'), 10);
           var rightbar3_init = parseInt($('#offer_2clipRight_rect')[0].getAttribute('x'), 10);
 
-          var heightbar_top2_init = parseInt($('#offer_3clipTop_rect')[0].getAttribute('y'), 10);
+          var heightbar_top3_init = parseInt($('#offer_3clipTop_rect')[0].getAttribute('y'), 10);
           var rightbar4_init = parseInt($('#offer_3clipRight_rect')[0].getAttribute('x'), 10);
 
 
@@ -87,12 +87,12 @@ angular.module('app')
 
 
 
-              if(position.percentage >= .074){
-                var checkpoint = (angular.element(el).prop('offsetHeight') * .074);
+              if(position.percentage >= .05){
+                var checkpoint = (angular.element(el).prop('offsetHeight') * .05);
                 var diff =  position.amount - checkpoint;
                 var rightBar = angular.element('#offerClipRectRight');
                 var rectPos = (rightbar_init + diff) * 1.6;
-                rectPos = rectPos > 357 ? 357 : rectPos
+                rectPos = rectPos > 353 ? 353 : rectPos
                 rightBar[0].setAttribute('x',  rectPos);
               } else {
                 var rightBar = angular.element('#offerClipRectRight');
@@ -111,6 +111,14 @@ angular.module('app')
                 angular.element(el).find('.icon.unidades').addClass('animate');
               } else {
                 angular.element(el).find('.icon.unidades').removeClass('animate');
+              }
+
+
+
+              if(position.percentage >= .17){
+                angular.element(el).find('.icon.subtitle').addClass('animate');
+              } else {
+                angular.element(el).find('.icon.subtitle').removeClass('animate');
               }
 
 
@@ -268,12 +276,12 @@ angular.module('app')
                 var checkpoint = (angular.element(el).prop('offsetHeight') * .73);
                 var diff =  position.amount - checkpoint;
                 var rightBar = angular.element('#offer_3clipTop_rect');
-                var rectPos = (heightbar_top2_init + diff) * .8;
+                var rectPos = (heightbar_top3_init + diff) * .8;
                 rectPos = rectPos > 497 ? 497 : rectPos
                 rightBar[0].setAttribute('y',  rectPos);
               } else {
                 var rightBar = angular.element('#offer_3clipTop_rect');
-                rightBar[0].setAttribute('y',  heightbar_top2_init);
+                rightBar[0].setAttribute('y',  heightbar_top3_init);
               } 
 
 

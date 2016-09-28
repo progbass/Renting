@@ -68,6 +68,11 @@ h1, h2, h3, h4, h5{
 }
 
 
+a[ng-click]{
+    cursor: pointer;
+}
+
+
 .icon{
   opacity: 0;
   position: relative;
@@ -98,6 +103,7 @@ h1, h2, h3, h4, h5{
     font-weight: 700;
     font-size: 5.2rem;
     line-height: .875em;
+    letter-spacing: -.06em;
     margin: 0;
   }
   h3{
@@ -105,6 +111,7 @@ h1, h2, h3, h4, h5{
     font-weight: 700;
     font-size: 2.0rem;
     margin: 0 0 .2em;
+    letter-spacing: -.06em;
   }
 
 
@@ -178,16 +185,21 @@ body{
   margin: 0;
   font-family: 'Poppins', sans-serif;
   font-size: 1.4rem;
+  letter-spacing: -.07em;
 }
 
 header{
   //display: none;
   position: fixed;
   z-index: 10;
-  top: 30px; left: 30px;
-  width: 220px;
+  padding: 30px 30px 0;
+  width: 100%;
+
+  
 
 
+  ///////////////////
+  // LOGO
   .logo{
     position: relative;
     display: block;
@@ -195,8 +207,8 @@ header{
     overflow: hidden;
     @include text-hide();
     margin-bottom: 1.5rem;
-    width: 1vw;
-    min-width: 220px;
+    width: 10vw;
+    min-width: 160px;
     background: url($images_path+'logo_multi.svg') no-repeat center top;
     background-size: 100%;
 
@@ -219,27 +231,177 @@ header{
     }
   }
 
-  ul.menu_list{
-    list-style: none;
-    margin: 0; padding: 0 0 0 28%;
+}
 
-    li{
-      margin-bottom: .38rem;
 
-      a{
-        font-weight: bold;
-        text-transform: uppercase;
 
-        @include transition(color .12s);
 
-        &:hover{
-          color: $id_color2;
-          text-decoration: none;
+#main_container{
+
+  &.slided{
+    #menu_column{
+      right: 0;
+    }
+    #content_column{
+      margin-left: -44vw;
+    }
+  }
+
+
+  
+  #menu_column,
+  #content_column{
+    @include transition(all .3s ease-in-out)
+  }
+
+
+  #menu_column{
+    position: fixed;
+    z-index: 90;
+    right: -44vw;
+    width: 44vw;
+    height: 100vh;
+    color: #fff;
+    background: $id_color2;
+
+
+    ///////////////////
+    // MENU ICON
+    .menu_icon{
+      position: absolute;
+      display: block;
+      top: 30px; left: -60px;
+      //width: 2.7777vw;
+      width: 30px;
+      height: 25px;
+      //min-width: 40px;
+      overflow: hidden;
+
+      @include text-hide();
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 1.75rem;
+      background: url($images_path+'icon_menu.svg') no-repeat center top;
+      background-size: cover;
+
+      // Hover
+      &:hover{
+        color: $id_color2;
+        text-decoration: none;
+      }
+    }
+
+
+
+
+    ///////////////////
+    // CERRAR ICON
+    a.close_icon{
+      position: absolute;
+      display: block;
+      top: 30px; right: 30px;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+
+      @include text-hide();
+      color: darken($id_color2, 15%);
+      text-transform: uppercase;
+      font-size: 1.75rem;
+      opacity: .8;
+
+      @include transition(all .12s ease);
+
+      &:hover{
+        opacity: 1;
+        color: $id_color;
+
+        &:before{
+          transform: rotate3d(0,0,1,-45deg); 
+          background-color: $id_color;
+        }
+        &:after{
+          transform: rotate3d(0,0,1,45deg); 
+          background-color: $id_color;
+        }
+      }
+
+      &:before, &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        transform-origin: 50% 50%;
+        top: 50%;
+        width: 100%; height: 5px;
+        background-color: darken($id_color2, 15%);
+        border-radius: 2em;
+        @include transition(all .28s .12s ease);
+      }
+   
+      &:before{
+        transform: rotate3d(0,0,1,45deg); 
+      }
+      &:after{
+        transform: rotate3d(0,0,1,-45deg); 
+      }
+    }
+
+
+    nav{
+      @include vertical-align();
+      font-size: 2rem;
+      text-align: center;
+
+      ul.menu_list{
+        list-style: none;
+        margin: 0; padding: 0;
+
+        li{
+          margin-bottom: .5rem;
+
+          a{
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            @include transition(color .12s);
+
+            &:hover{
+              color: $id_color;
+              text-decoration: none;
+            }
+          }
         }
       }
     }
   }
+
+
+
+  @media screen and (min-width: 980px){
+    #menu_column{
+      right: -23vw;
+      width: 23vw;
+
+      nav{
+        font-size: 2.5rem;
+      }
+    }
+
+    &.slided{
+      #menu_column{
+        right: 0;
+      }
+      #content_column{
+        margin-left: -23vw;
+      }
+    }
+  }
 }
+
+
+
+
 
 
 
@@ -258,7 +420,7 @@ section{
     width: 100vw;
     height: (100*.5949494949)+vw;
     max-width: 100%;
-    top: 0;
+    //top: 0;
   }
 
 
@@ -322,6 +484,17 @@ section#home{
     height: 100%;
     width: 100vw;
     max-width: 100%;
+
+    opacity: 0;
+    @include transform( scale(.75) );
+    @include transition(all 1.6s ease-in-out);
+
+
+    &.visible{
+      display: block;
+      opacity: 1;
+      @include transform( scale(1) );
+    }
     
 
     a.close_btn{
@@ -339,12 +512,15 @@ section#home{
 
       &:hover{
         opacity: 1;
+        color: $id_color2;
 
         &:before{
           transform: rotate3d(0,0,1,-45deg); 
+          background-color: $id_color2;
         }
         &:after{
           transform: rotate3d(0,0,1,45deg); 
+          background-color: $id_color2;
         }
       }
 
@@ -387,52 +563,51 @@ section#home{
 
   svg{
     position: fixed;
-    bottom: 0;
+    bottom: -3px; left: 2px;
   }
 
-  h2{
-    @include vertical-align();
-    position: absolute;
-    left: 0; right: 0;
-    margin: 0 auto;
-    width: 5vw;
-    max-width: 40px;
 
-    @include text-hide();
+
+  h2{
+    position: absolute;
+    left: 50%; top: 50%;
+    @include transform( translate(-50%, -50%) );
+    margin: -.35em auto 0;
+    width: 51.7171vw;
+    max-width: 1024px;
+
+    color: #0081c9;
     text-align: center;
     text-transform: uppercase;
+    font-size: 4.25vw;
     font-weight: 700;
 
-    background: url($images_path+'icon_play.svg') no-repeat;
-    background-size: contain;
-
-    span{
-      display: none;
+    img{
+      display: block;
+      margin: .1em auto 0;
+      width: 100%;
     }
 
-    &:before{
-      content: '';
+
+    span{
       display: block;
-      position: relative;
-      width: 100%; padding-bottom: 130.18867925%;
+      margin: .32em auto 0;
+      width: 2.6767vw;
+      max-width: 30px;
+      background: url($images_path+'icon_play.svg') no-repeat;
+      background-size: contain;
+
+      &:before{
+        content: '';
+        display: block;
+        position: relative;
+        width: 100%; padding-bottom: 130.18867925%;
+      }
     }
   }
 
   
-  .circles {
-    width: 100%;
-    background: url($images_path+'home_circles.svg') no-repeat;
-    background-size: contain;
 
-     @include animation(rotate 60.0s linear infinite);
-
-    &:before{
-      content: '';
-      display: block;
-      position: relative;
-      width: 100%; padding-bottom: 100%;
-    }
-  }
 
 
 
@@ -440,6 +615,12 @@ section#home{
   @media screen and (min-width: 640px){
     .holder{
       width: 40%
+    }
+  }
+
+  @media screen and (min-width: $reference_desktop){
+    svg{
+
     }
   }
 }

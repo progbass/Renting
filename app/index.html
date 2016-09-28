@@ -20,50 +20,61 @@
   <body ng-app="app">
 
     
-  <div id="main_container" class="" ng-controller="ScrollCtrl" scroller>
-      <header>
-        <a href="#/home" class="logo"></a>
-        
-        <nav>
-          <ul class="menu_list">
-            <li><a href="#/about">Somos</a></li>
-            <li><a href="#/offer">Ofrecemos</a></li>
-            <li><a href="#/leasing">Productos</a></li>
-            <li><a href="#/contact">Contacto</a></li>
-            <li><a href="#/faqs">FAQs</a></li>
-          </ul>  
-        </nav>
-      </header>
+    <div id="main_container" class="" ng-controller="ScrollCtrl" scroller>
 
 
-      <section id="home" viewport home>
-        <div></div>
-      </section>
+        <div id="menu_column" main-menu >
+            <a ng-click="isOpen = true" class="menu_icon">Menu</a>
+            <a ng-click="isOpen = false" class="close_icon">Cerrar</a>
+            
+            <nav>
+              <ul class="menu_list">
+                <li><a href="#/about">Somos</a></li>
+                <li><a href="#/offer">Ofrecemos</a></li>
+                <li><a href="#/leasing">Productos</a></li>
+                <li><a href="#/contact">Contacto</a></li>
+                <li><a href="#/faqs">FAQs</a></li>
+              </ul>  
+            </nav>
+        </div>
+
+
+        <div id="content_column">
+          <header>
+            <a href="#/home" class="logo"></a>
+          </header>
+
+
+          <section id="home" viewport home>
+            <div></div>
+          </section>
 
 
 
-      <section id="about" viewport about>
-        <div></div>
-      </section>
+          <section id="about" viewport about>
+            <div></div>
+          </section>
 
 
 
-      <section id="offer" viewport offer >
-        <div></div>
-      </section>
+          <section id="offer" viewport offer >
+            <div></div>
+          </section>
 
 
-      <section id="leasing" viewport leasing >
-        <div></div>
-      </section>
+          <section id="leasing" viewport leasing >
+            <div></div>
+          </section>
 
 
-      <section id="contact" viewport contact >
-        <div></div>
-      </section>
-        
-      
+          <section id="contact" viewport contact >
+            <div></div>
+          </section>
+            
+          
+        </div>
     </div>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -111,6 +122,7 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/scroll.js"></script>
 
+    <script src="scripts/directives/menu.js"></script>
     <script src="scripts/directives/scroll.js"></script>
     <script src="scripts/directives/section.js"></script>
     <script src="scripts/directives/about.js"></script>

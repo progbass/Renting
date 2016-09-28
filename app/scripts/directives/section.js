@@ -70,9 +70,9 @@ angular.module('app')
     return{
       require: '^viewport',
       templateUrl: 'views/main.html',
-      controller: ['$sce', '$element', function($sce, $element){
+      controller: ['$scope', '$sce', '$element', function($scope, $sce, $element){
         var controller =  this;
-        controller.API = null;
+        $scope.API = null;
         controller.config = {
           sources: [
             {src: $sce.trustAsResourceUrl("video/casanova_final_converted.mp4"), type: "video/mp4"},
@@ -86,22 +86,36 @@ angular.module('app')
         };
 
         controller.onPlayerReady = function(API) {
-          controller.API = API;
+          $scope.API = API;
         };
 
 
         controller.closeVideo = function(API) {
-          //$element.find('.holder').show();
-          $element.find('.video_container').hide();
-          controller.API.stop();
+          //
+          $element.find('.video_container')
+          .toggleClass('visible', false);
+          $scope.API.stop();
         };
 
 
         controller.playVideo = function(){
-          //$element.find('.holder').show();
-          $element.find('.video_container').show();
-          controller.API.play();
+          $scope.API.isCompleted = false;
+
+          $element.find('.video_container')
+          .toggleClass('visible', true);
+          $scope.API.play();
         }
+
+        $scope.$watch(
+            function() {
+              //console.log($scope.API.isCompleted)
+              return $scope.API.isCompleted;
+            },
+            function(lastValue, newValue){
+              if(!newValue)
+                setTimeout(controller.closeVideo, 1200)
+            }
+        );
       }],
 
       controllerAs: 'homeCtrl',

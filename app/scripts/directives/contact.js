@@ -16,6 +16,8 @@ angular.module('app')
       link: function(scope, el, attrs) {
           scope.customScroll = $window.innerWidth + 1600;
 
+          var rightbar2_init = parseInt($('#contact_clipRight_rect')[0].getAttribute('x'), 10);
+          
           var draw = function(position){
             //console.log(position.amount+'    '+position.percentage)
             
@@ -39,7 +41,20 @@ angular.module('app')
                 angular.element(el).find('.contact_form').removeClass('animate');
               }
 
-              console.log(position.amount+'   '+((angular.element(el).prop('offsetHeight') - $window.innerHeight) - 800))
+
+              if(position.percentage >= .18){
+                var checkpoint = (angular.element(el).prop('offsetHeight') * .18);
+                var diff =  position.amount - checkpoint;
+                var rightBar = angular.element('#contact_clipRight_rect');
+                var rectPos = (rightbar2_init + diff);
+                rectPos = rectPos > 1811 ? 1811 : rectPos
+                rightBar[0].setAttribute('x',  rectPos);
+              } else {
+                var rightBar = angular.element('#contact_clipRight_rect');
+                rightBar[0].setAttribute('x',  rightbar2_init);
+              } 
+
+              //console.log(position.amount+'   '+((angular.element(el).prop('offsetHeight') - $window.innerHeight) - 800))
               // if(position.amount > (angular.element(el).prop('offsetHeight') - $window.innerWidth)){
               //   var checkpoint = (angular.element(el).prop('offsetHeight') - $window.innerHeight);
               //   var diff = position.amount - checkpoint;

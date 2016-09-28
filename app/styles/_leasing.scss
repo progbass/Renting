@@ -23,6 +23,17 @@ section#leasing{
     ////////////////////////////
     &.leasing{
 
+      .svg_top{
+        position: absolute;
+        width: 100vw;
+      }
+
+      .svg_bottom{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      }
+
       .icon{
         color: #fff;
 
@@ -41,6 +52,8 @@ section#leasing{
           }
         }
 
+        ///////////////////
+        /// NAV
         &.nav{
           font-size: 1.25vw;
 
@@ -58,8 +71,19 @@ section#leasing{
     // FSL
     ////////////////////////////
     &.fsl{
-      background: $id_color3;
-      color: #FFF;
+      background: #FFF;
+      color: $id_color;
+
+      .svg_top{
+        position: absolute;
+        width: 100vw;
+      }
+
+      .svg_bottom{
+        position: absolute;
+        width: 100vw;
+        bottom: 0;
+      }
 
       .icon{
       }
@@ -81,6 +105,48 @@ section#leasing{
       // LEASING
       ////////////////////////////
       &.leasing{
+
+        .icon{
+          position: absolute;
+
+          &.leasing{
+            left: percentage(545/$reference_width);
+            top: percentage(270/$reference_height);
+          }
+
+          &.seguro{
+            left: percentage(545/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.kms{
+            left: percentage(1120/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.tramites{
+            left: percentage(1580/$reference_width);
+            top: percentage(720/$reference_height);
+          }
+
+          &.nav{
+            right: 0;
+            bottom: 4vh;
+
+            a{
+              display: block;
+              line-height: 1em;
+            }
+          }
+        }
+      }
+
+
+
+      ////////////////////////////
+      // FSL
+      ////////////////////////////
+      &.fsl{
 
         .icon{
           position: absolute;
