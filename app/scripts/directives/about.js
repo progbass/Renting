@@ -12,15 +12,33 @@ angular.module('app')
     return{
       require: '^viewport',
       templateUrl: 'views/about.html',
-      scope: true,
+
       link: function(scope, el, attrs) {
           scope.customScroll = 5000;
 
+          // MODAL WINDOW
+          angular.element(el).find('.window').hide();
+          scope.openModal = function(_target){
+            // Get Desired Information Frame
+            $(el).find('.frame').hide();
+            $(el).find('.frame.'+_target).show();
 
+            // Show window
+            $(el).find('.window').fadeIn(160);
+          }
+          scope.closeModal = function(){
+            // Close window
+            $(el).find('.window').fadeOut(140);
+          }
+
+
+          // Poition Variables
           var topbar_init = parseInt($('#aboutClipRectTop')[0].getAttribute('y'), 10);
           var rightbar_init = parseInt($('#aboutClipRectRight')[0].getAttribute('x'), 10);
           var topbar2_init = parseInt($('#about2ClipRectTop')[0].getAttribute('y'), 10);
           var rightbar2_init = parseInt($('#about2ClipRectRight')[0].getAttribute('x'), 10);
+
+
           var draw = function(position){
             //console.log(position.amount+'    '+position.percentage)
             
@@ -68,16 +86,26 @@ angular.module('app')
               } 
 
 
-              if(position.percentage >= .246){
-                angular.element(el).find('.icon.beneficios').addClass('animate');
+              if(position.percentage >= .243){
+                angular.element(el).find('.icon.beneficios .frame1').addClass('animate');
               } else {
-                angular.element(el).find('.icon.beneficios').removeClass('animate');
+                angular.element(el).find('.icon.beneficios .frame1').removeClass('animate');
+              }
+              if(position.percentage >= .27){
+                angular.element(el).find('.icon.beneficios .frame2').addClass('animate');
+              } else {
+                angular.element(el).find('.icon.beneficios .frame2').removeClass('animate');
               }
 
-              if(position.percentage >= .32){
-                angular.element(el).find('.icon.mercado').addClass('animate');
+              if(position.percentage >= .315){
+                angular.element(el).find('.icon.mercado .frame3').addClass('animate');
               } else {
-                angular.element(el).find('.icon.mercado').removeClass('animate');
+                angular.element(el).find('.icon.mercado .frame3').removeClass('animate');
+              }
+              if(position.percentage >= .35){
+                angular.element(el).find('.icon.mercado .frame4').addClass('animate');
+              } else {
+                angular.element(el).find('.icon.mercado .frame4').removeClass('animate');
               }
 
 
@@ -109,16 +137,21 @@ angular.module('app')
 
 
 
-              if(position.percentage >= .74){
-                angular.element(el).find('.icon.mexico').addClass('animate');
+              if(position.percentage >= .73){
+                angular.element(el).find('.icon.mexico .frame1').addClass('animate');
               } else {
-                angular.element(el).find('.icon.mexico').removeClass('animate');
+                angular.element(el).find('.icon.mexico .frame1').removeClass('animate');
+              }
+              if(position.percentage >= .76){
+                angular.element(el).find('.icon.mexico .frame2').addClass('animate');
+              } else {
+                angular.element(el).find('.icon.mexico .frame2').removeClass('animate');
               }
 
-              if(position.percentage >= .81){
-                angular.element(el).find('.icon.nacional').addClass('animate');
+              if(position.percentage >= .805){
+                angular.element(el).find('.icon.nacional .frame3').addClass('animate');
               } else {
-                angular.element(el).find('.icon.nacional').removeClass('animate');
+                angular.element(el).find('.icon.nacional .frame3').removeClass('animate');
               }
 
 
@@ -150,48 +183,16 @@ angular.module('app')
               }
 
             }
-
-
-/*
-            var y_pos = $window.innerHeight - position.total;
-            y_pos = (y_pos < 0) ? 0 : y_pos;
-            //console.log(y_pos)
-            setVendor($('#about .wrapper')[0], 'transform', 'translate3d(0px, '+(y_pos)+'px, 0px)' );
-          
-
-            // Horizontal Movement
-            var checkpoint = $window.innerWidth;
-            var distance = 800;
-            if(position.amount > checkpoint){
-              var offset = position.amount - checkpoint;
-              var pos_x = -($window.innerWidth * (offset/distance));
-              //console.log(position.amount+'  '+checkpoint)
-              pos_x = pos_x < -$window.innerWidth ? -$window.innerWidth : pos_x;
-
-
-
-
-              var checkpoint2 = checkpoint + distance + 800
-              var distance = 800;
-              if(position.amount > checkpoint2){
-                offset = position.amount - checkpoint2;
-                pos_x = -$window.innerWidth;
-                y_pos = -($window.innerHeight * (offset/distance));//checkpoint2 - position.amount
-              }
-
-
-              setVendor($('#about .wrapper')[0], 'transform', 'translate3d('+pos_x+'px, '+y_pos+'px, 0px)' );
-            }
-*/
-
           }
 
-          scope.$watch('scroll_position', function(newValue, oldValue) {
-            draw(scope.getPosition());
-          }, true);
 
+
+          
+          // Draw Scene
           scope.resizeSection(el);
-          scope.draw(scope.getPosition());
+          scope.$on('draw',function(event) {
+             draw(scope.getPosition());
+          });
       }
     }
 });

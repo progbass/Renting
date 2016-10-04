@@ -9,18 +9,6 @@ section#offer{
 
   .slide{
     width: 100vw;
-    height: 100vh;
-    top: -100vh;
-
-    &:nth-child(2){
-      position: relative;
-      left: 100vw; //top: -100vh;
-    }
-    &:nth-child(3){
-      position: relative;
-      left: 200vw; //top: -100vh;
-      top: -200vh;
-    }
 
 
 
@@ -28,15 +16,10 @@ section#offer{
     // SATISFACCIÓN
     ////////////////////////////
     &.satisfaccion{
-
-      .svg_holder{
-        position: absolute;
-        width: 100vw;
-      }
-
       
       .icon{
         color: #FFF;
+        margin-bottom: .25em;
 
         ///////////////////
         /// TITLE
@@ -44,6 +27,12 @@ section#offer{
           h3{
             color: $id_color;
           }
+        }
+
+        ///////////////////
+        /// SUBTITLE
+        &.subtitle {
+          display: none;
         }
 
         //////////////////
@@ -81,18 +70,13 @@ section#offer{
     // DISPONIBILIDAD
     ////////////////////////////
     &.disponibilidad{
+      margin-left: -20px;
+      padding: 80px 20px;
       background: $id_color3;
       color: #FFF;
 
-      .svg_top{
-        position: absolute;
-        width: 100vw;
-      }
-
       .svg_bottom{
-        position: absolute;
-        width: 100vw;
-        bottom: 0;
+        display: none;
       }
 
       .icon{
@@ -112,18 +96,26 @@ section#offer{
       color: #FFF;
 
       .svg_bottom{
-        position: absolute;
-        width: 100vw;
-        bottom: 0;
       }
 
       .icon{
         color: #fff;
         cursor: pointer;
 
-
+        
+        ///////////////
+        /// CASANOVA LINK
         &.renta{
 
+          &:hover{
+            a{
+              color: $id_color;
+            }
+
+            span{
+              @include transform(translateX(.5vw))
+            }
+          }
 
           span{
             //@include vertical-align();
@@ -133,6 +125,8 @@ section#offer{
             font-weight: 500;
             letter-spacing: -.3em;
             line-height: .875em;
+
+            @include transition(transform .1s ease-out);
           }
 
 
@@ -142,15 +136,31 @@ section#offer{
             color: #FFF;
             text-transform: none;
 
+            @include transition(color .1s ease-out);
+
             &:hover{
               text-decoration: none;
             }
           }
         }
+        
+
 
         &.leasing{
           margin-top: 40px;
           color: $id_color;
+
+          &:hover{
+            @include transform(translateX(.875vw))
+          }
+        }
+
+
+
+        &.service{
+          &:hover{
+            @include transform(translateX(.875vw))
+          }
         }
       }
     }
@@ -166,11 +176,31 @@ section#offer{
   //---------------------------------------------------------//
   @media screen and ( min-width: $reference_desktop){
     .slide{
+      height: 100vh;
+      top: -100vh;
+
+      &:nth-child(2){
+        position: relative;
+        left: 100vw; //top: -100vh;
+      }
+      &:nth-child(3){
+        position: relative;
+        left: 200vw; //top: -100vh;
+        top: -200vh;
+      }
+
 
       ////////////////////////////
       // SATISFACCIÓN
       ////////////////////////////
       &.satisfaccion{
+        padding: 0;
+
+        .svg_holder{
+          position: absolute;
+          width: 100vw;
+        }
+
 
         .icon{
           position: absolute;
@@ -185,6 +215,7 @@ section#offer{
           ///////////////////
           /// SUBTITLE
           &.subtitle {
+            display: block;
             right: percentage(185/$reference_width);
             top: percentage(576/$reference_height);
           }
@@ -227,6 +258,19 @@ section#offer{
       // DISPONIBILIDAD
       ////////////////////////////
       &.disponibilidad{
+        padding: 0;
+        margin-left: 0;
+
+        .svg_top{
+          position: absolute;
+          width: 100vw;
+        }
+
+        .svg_bottom{
+          position: absolute;
+          width: 100vw;
+          bottom: 0;
+        }
 
         .icon{
           position: absolute;
@@ -272,6 +316,13 @@ section#offer{
       // LEASING
       ////////////////////////////
       &.leasing{
+        padding: 0;
+
+        .svg_bottom{
+          position: absolute;
+          width: 100vw;
+          bottom: 0;
+        }
 
         .icon{
           position: absolute;

@@ -16,6 +16,7 @@ angular.module('app')
       link: function(scope, el, attrs, controller) {
         scope.customScroll = 0;
         scope.inView = false;
+        scope.isMobile = true;
 
         //
         var scroll_watcher;
@@ -24,24 +25,47 @@ angular.module('app')
           
           if(newValue){
             scroll_watcher = scope.$watch('scroll_position', function(newValue, oldValue) {
-              scope.draw(scope.getPosition())
+
+              if(!scope.isMobile)
+                scope.$broadcast('draw');
+
             }, true);
           } else {
+            el.find('.wrapper').toggleClass('fixed', false);
+
             if(scroll_watcher)
               scroll_watcher();
           }
         });
 
 
+        angular.element($window).bind('resize', function(){
+          scope.resizeSection();
+          scope.$digest();
+        });
+
+
         scope.draw = function(){}
 
-        scope.resizeSection = function(el){
-          var height = $window.innerHeight;
-          if(scope.customScroll > $window.innerHeight)
-            height = scope.customScroll;
+        scope.resizeSection = function(){
 
-          // set height
-          el.height( $window.innerHeight + scope.customScroll );
+          if($window.innerWidth > 700){
+            scope.isMobile = false;
+
+            var height = $window.innerHeight;
+            if(scope.customScroll > $window.innerHeight)
+              height = scope.customScroll;
+
+            // set height
+            el.height( $window.innerHeight + scope.customScroll );
+
+          } else {
+            scope.isMobile = true;
+            
+            // set height
+            el.height( 'auto' );
+
+          }
         }
 
 
@@ -58,11 +82,9 @@ angular.module('app')
               windowBottom = windowTop + windowHeight;
 
           var change = (windowTop-sectionTop)/(sectionHeight);
+
           return {percentage: change, total: offset, amount: (windowTop-sectionTop)};
         }
-
-
-        scope.draw(scope.getPosition());
       }
     }
 })
@@ -70,7 +92,8 @@ angular.module('app')
     return{
       require: '^viewport',
       templateUrl: 'views/main.html',
-      controller: ['$scope', '$sce', '$element', function($scope, $sce, $element){
+      scope: true,
+      controller: ['$scope', '$sce', '$element', 'appServices', function($scope, $sce, $element, appServices){
         var controller =  this;
         $scope.API = null;
         controller.config = {
@@ -91,18 +114,36 @@ angular.module('app')
 
 
         controller.closeVideo = function(API) {
-          //
+          //Enable Window Scroll
+          appServices.enableScroll();
+
+          // Stop Video
+          $scope.API.stop();
+
+          // Hide Video Container
           $element.find('.video_container')
           .toggleClass('visible', false);
-          $scope.API.stop();
+
+          // Send to back
+          $element.find('.wrapper').css('z-index', 10);
         };
 
 
         controller.playVideo = function(){
+          //Disable Window Scroll
+          appServices.disableScroll();
+
+          // Update Video Status
           $scope.API.isCompleted = false;
 
+          // Show Video Container
           $element.find('.video_container')
           .toggleClass('visible', true);
+
+          // Send to front
+          $element.find('.wrapper').css('z-index', 100);
+
+          // Play Video
           $scope.API.play();
         }
 
@@ -118,36 +159,55 @@ angular.module('app')
         );
       }],
 
+
       controllerAs: 'homeCtrl',
+
+
       link: function(scope, el, attrs, test) {
         scope.customScroll = 600;
 
         var topbar_init = parseInt(angular.element('#landingClipRectTop')[0].getAttribute('y'), 10);
-        scope.draw = function(position){
+
+
+        var draw = function(position){
           var topBar = angular.element('#landingClipRectTop');
           var rectPos = (topbar_init + position.amount) * .7;
           rectPos = rectPos > 800 ? 800 : rectPos
           topBar[0].setAttribute('y',  rectPos);
 
 
-          $('#home .wrapper').toggleClass('fixed', true);
-          var x_pos = 0;
-          var y_pos = 0;
-          var checkpoint = angular.element(el).prop('offsetHeight') - $window.innerHeight;
-          if(position.amount >=  checkpoint){
-            var offset = position.amount - checkpoint;
-            y_pos = -(offset);
+          // Pin Content Holder
+          el.find('.wrapper').toggleClass('fixed', true);
+
+          // Animation Control
+          if(position.percentage < 0){
+              //$('#home .wrapper').toggleClass('fixed', false);
+
+          } else {
+
+            var x_pos = 0;
+            var y_pos = 0;
+              
+            var checkpoint = angular.element(el).prop('offsetHeight') - $window.innerHeight;
+            if(position.amount >=  checkpoint){
+
+                var offset = position.amount - checkpoint;
+                y_pos = -(offset);
+                y_pos = position.percentage >= 1 ? -$window.innerHeight : y_pos;
+
+            }
+
+            setVendor($('#home .wrapper')[0], 'transform', 'translate3d('+(x_pos)+'px, '+(y_pos)+'px, 0px)' );
+
           }
-
-
-          setVendor($('#home .wrapper')[0], 'transform', 'translate3d('+(x_pos)+'px, '+(y_pos)+'px, 0px)' );
-
         };
 
 
-        //Resize container
+        // Draw Scene
         scope.resizeSection(el);
-        scope.draw(scope.getPosition());
+        scope.$on('draw',function(event) {
+           draw(scope.getPosition());
+        });
       }
     }
 });

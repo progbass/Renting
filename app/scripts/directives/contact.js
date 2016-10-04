@@ -16,6 +16,23 @@ angular.module('app')
       link: function(scope, el, attrs) {
           scope.customScroll = $window.innerWidth + 1600;
 
+          // MODAL WINDOW
+          angular.element(el).find('.window').hide();
+          scope.openModal = function(_target){
+            // Get Desired Information Frame
+            $(el).find('.frame').hide();
+            $(el).find('.frame.'+_target).show();
+
+            // Show window
+            $(el).find('.window').fadeIn(160);
+          }
+          scope.closeModal = function(){
+            // Close window
+            $(el).find('.window').fadeOut(140);
+          }
+
+          
+
           var rightbar2_init = parseInt($('#contact_clipRight_rect')[0].getAttribute('x'), 10);
           
           var draw = function(position){
@@ -54,21 +71,17 @@ angular.module('app')
                 rightBar[0].setAttribute('x',  rightbar2_init);
               } 
 
-              //console.log(position.amount+'   '+((angular.element(el).prop('offsetHeight') - $window.innerHeight) - 800))
-              // if(position.amount > (angular.element(el).prop('offsetHeight') - $window.innerWidth)){
-              //   var checkpoint = (angular.element(el).prop('offsetHeight') - $window.innerHeight);
-              //   var diff = position.amount - checkpoint;
-              //   x_pos = -(diff);
-              //   setVendor($('#contact .wrapper')[0], 'transform', 'translate3d('+(x_pos)+'px, '+(y_pos)+'px, 0px)' );
 
-              // }
-              if(position.amount > ((angular.element(el).prop('offsetHeight') - $window.innerHeight) - 800)){
-                var checkpoint = ((angular.element(el).prop('offsetHeight') - $window.innerHeight) - 800);
+
+              //////////////////////////////
+              /// OUTRO
+              if(position.amount > (angular.element(el).prop('offsetHeight') - $window.innerHeight)){
+                var checkpoint = (angular.element(el).prop('offsetHeight') - $window.innerHeight);
                 var diff = position.amount - checkpoint;
-                var duration = 800;
-                x_pos = -((diff / duration) * $window.innerWidth);
-                x_pos = x_pos <= -$window.innerWidth ? -$window.innerWidth : x_pos;
-                //setVendor($('#contact .wrapper')[0], 'transform', 'translate3d('+(x_pos)+'px, '+(y_pos)+'px, 0px)' );
+                var offset = position.amount - checkpoint;
+                y_pos = -(offset);
+                //setVendor($('#leasing .wrapper')[0], 'transform', 'translate3d('+(x_pos)+'px, '+(y_pos)+'px, 0px)' );
+
               }
 
 
@@ -79,12 +92,12 @@ angular.module('app')
 
           }
 
-          scope.$watch('scroll_position', function(newValue, oldValue) {
-            draw(scope.getPosition());
-          }, true);
-
+          
+          // Draw Scene
           scope.resizeSection(el);
-          scope.draw(scope.getPosition());
+          scope.$on('draw',function(event) {
+             draw(scope.getPosition());
+          });
       }
     }
 });

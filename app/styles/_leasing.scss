@@ -5,37 +5,37 @@ section#leasing{
   color: #fff;
   background: $id_color;
 
-
+  .wrapper{
+    padding-bottom: 0
+  }
 
   .slide{
-    width: 100vw;
-    height: 100vh;
-    top: -100vh;
-
-    &:nth-child(2){
-      position: relative;
-      left: 100vw; //top: -100vh;
-    }
-
 
     ////////////////////////////
     // LEASING
     ////////////////////////////
     &.leasing{
 
+      // SVG HOLDERS
       .svg_top{
-        position: absolute;
-        width: 100vw;
       }
-
       .svg_bottom{
-        position: absolute;
-        width: 100vw;
-        bottom: 0;
+        display: none
       }
 
+
+      // WINDOW
+      .window{
+        top: 43.5%;
+        height: 39%;
+      }
+      
+
+
+      // ICONS
       .icon{
         color: #fff;
+        opacity: 1;
 
 
         ///////////////////
@@ -71,21 +71,34 @@ section#leasing{
     // FSL
     ////////////////////////////
     &.fsl{
+      width: 100vw;
+      margin-left: -20px;
+      padding: 50px 20px;
       background: #FFF;
       color: $id_color;
 
+      // SVG HOLDERS
       .svg_top{
-        position: absolute;
-        width: 100vw;
+      }
+      .svg_bottom{
+        display: none
       }
 
-      .svg_bottom{
-        position: absolute;
-        width: 100vw;
-        bottom: 0;
-      }
 
       .icon{
+
+        &.mantenimiento,
+        &.auto,
+        &.traslados{
+          h4{
+            margin-bottom: .12em;
+            color: $id_color
+          }
+
+          p{
+            color: $id_color
+          }
+        }
       }
     }
   }
@@ -100,14 +113,39 @@ section#leasing{
   //---------------------------------------------------------//
   @media screen and ( min-width: $reference_desktop ){
     .slide{
+      width: 100vw;
+      height: 100vh;
+      top: -100vh;
+
+      &:nth-child(2){
+        position: relative;
+        left: 100vw; //top: -100vh;
+      }
+
 
       ////////////////////////////
       // LEASING
       ////////////////////////////
       &.leasing{
+        padding: 0;
+
+        // SVG HOLDERS
+        .svg_top{
+          position: absolute;
+          width: 100vw;
+          top: -4vw;
+        }
+        .svg_bottom{
+          position: absolute;
+          width: 100vw;
+          bottom: 0;
+        }
 
         .icon{
           position: absolute;
+          width: 18.75vw;
+
+          p{ font-size: 1.5vw; }
 
           &.leasing{
             left: percentage(545/$reference_width);
@@ -116,17 +154,17 @@ section#leasing{
 
           &.seguro{
             left: percentage(545/$reference_width);
-            top: percentage(720/$reference_height);
+            top: percentage(690/$reference_height);
           }
 
           &.kms{
             left: percentage(1120/$reference_width);
-            top: percentage(720/$reference_height);
+            top: percentage(690/$reference_height);
           }
 
           &.tramites{
-            left: percentage(1580/$reference_width);
-            top: percentage(720/$reference_height);
+            left: percentage(1500/$reference_width);
+            top: percentage(690/$reference_height);
           }
 
           &.nav{
@@ -147,8 +185,36 @@ section#leasing{
       // FSL
       ////////////////////////////
       &.fsl{
+        margin-left: 0;
+        padding: 0;
+
+        // SVG HOLDERS
+        .svg_top{
+          position: absolute;
+          width: 100vw;
+          top: -10vh;
+        }
+        .svg_bottom{
+          position: absolute;
+          width: 100vw;
+          bottom: 0;
+        }
+
+
+        .plus_icon{
+          opacity: 0;
+          @include transition(all .1s ease-out);
+          transform-origin: 50% 50%;
+
+          &.animate{
+            opacity: 1;
+            @include transform(rotate(90deg));
+          }
+        }
+
 
         .icon{
+          opacity: 1;
           position: absolute;
 
           &.leasing{
@@ -157,19 +223,35 @@ section#leasing{
           }
 
           &.seguro{
-            left: percentage(545/$reference_width);
-            top: percentage(720/$reference_height);
+            left: percentage(675/$reference_width);
+            top: percentage(560/$reference_height);
           }
 
           &.kms{
-            left: percentage(1120/$reference_width);
-            top: percentage(720/$reference_height);
+            left: percentage(1100/$reference_width);
+            top: percentage(560/$reference_height);
           }
 
           &.tramites{
-            left: percentage(1580/$reference_width);
-            top: percentage(720/$reference_height);
+            left: percentage(1660/$reference_width);
+            top: percentage(560/$reference_height);
           }
+
+          &.mantenimiento{
+            left: percentage(530/$reference_width);
+            top: percentage(760/$reference_height);
+          }
+
+          &.auto{
+            left: percentage(1150/$reference_width);
+            top: percentage(760/$reference_height);
+          }
+
+          &.traslados{
+            left: percentage(1660/$reference_width);
+            top: percentage(760/$reference_height);
+          }
+
 
           &.nav{
             right: 0;

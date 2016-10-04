@@ -17,11 +17,10 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
+
   <body ng-app="app">
 
-    
-    <div id="main_container" class="" ng-controller="ScrollCtrl" scroller>
-
+    <div id="main_container" scroller>
 
         <div id="menu_column" main-menu >
             <a ng-click="isOpen = true" class="menu_icon">Menu</a>
@@ -40,41 +39,17 @@
 
 
         <div id="content_column">
-          <header>
-            <a href="#/home" class="logo"></a>
-          </header>
+          <a href="#/home" class="logo"></a>
 
-
-          <section id="home" viewport home>
-            <div></div>
-          </section>
-
-
-
-          <section id="about" viewport about>
-            <div></div>
-          </section>
-
-
-
-          <section id="offer" viewport offer >
-            <div></div>
-          </section>
-
-
-          <section id="leasing" viewport leasing >
-            <div></div>
-          </section>
-
-
-          <section id="contact" viewport contact >
-            <div></div>
-          </section>
+          <section id="home" viewport home></section>
+          <section id="about" viewport about></section>
+          <section id="offer" viewport offer ></section>
+          <section id="leasing" viewport leasing ></section>
+          <section id="contact" viewport contact ></section>
+          <section id="faqs" viewport faqs ></section>
             
-          
         </div>
     </div>
-
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -120,8 +95,6 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/scroll.js"></script>
-
     <script src="scripts/directives/menu.js"></script>
     <script src="scripts/directives/scroll.js"></script>
     <script src="scripts/directives/section.js"></script>
@@ -129,6 +102,8 @@
     <script src="scripts/directives/leasing.js"></script>
     <script src="scripts/directives/offer.js"></script>
     <script src="scripts/directives/contact.js"></script>
+    <script src="scripts/directives/faqs.js"></script>
     <!-- endbuild -->
+    
 </body>
 </html>

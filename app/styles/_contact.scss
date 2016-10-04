@@ -8,9 +8,6 @@ section#contact{
 
 
   .slide{
-    width: 100vw;
-    height: 100vh;
-    top: 0;
     color: #fff;
 
 
@@ -44,6 +41,9 @@ section#contact{
         //////////////////
         // FROM
         &.contact_form{
+          margin: 0 auto;
+          width: 80%;
+
           form{
 
             .data_holder{
@@ -79,7 +79,7 @@ section#contact{
               margin: auto;
               color: #fff;//darken($id_color, 10%);
               background: $id_color;
-              font-size: 1.8rem;
+              font-size: 1.25rem;
               font-weight: 700;
 
               @include transition(all .1s ease-out);
@@ -98,59 +98,8 @@ section#contact{
               padding: .7em 1.25em .55em;
               background: $id_color2;
               font-weight: 700;
-              font-size: 1.75rem;
+              font-size: 1.25rem;
               text-transform: uppercase;
-            }
-          }
-        }
-      }
-    }
-
-
-
-
-    ////////////////////////////
-    // FAQs
-    ////////////////////////////
-    &.faqs{
-      background: $id_color;
-      color: #FFF;
-
-      .icon{
-        color: #fff;
-        opacity: 1;
-        text-transform: none;
-
-        p{
-          padding: 0;
-          font-weight: 500;
-        }
-        
-
-        //////////////////
-        // TITLE
-        &.faqs_title{
-        }
-
-
-        //////////////////
-        // FAQS LIST
-        &.faqs_list{
-          ul{
-            margin: 0; padding: 0; border: none;
-            list-style: none;
-
-            li{
-              margin-bottom: .5em;
-              height: 7em;
-
-              p{
-                font-size: 1.5vw;
-              }
-
-              h4{
-                font-size: 1.875vw;
-              }
             }
           }
         }
@@ -168,6 +117,9 @@ section#contact{
   //---------------------------------------------------------//
   @media screen and ( min-width: $reference_desktop){
     .slide{
+      width: 100vw;
+      height: 100vh;
+      top: 0;
 
       &.form{
         .icon{
@@ -176,7 +128,7 @@ section#contact{
           //////////////////
           // INFO
           &.contact_info{
-            width: percentage(840/$reference_width);
+            width: percentage(780/$reference_width);
             left: percentage(532/$reference_width);
             top: percentage(340/$reference_height);
           }
@@ -186,6 +138,7 @@ section#contact{
           // FROM
           &.contact_form{
             @include clearfix();
+            margin: 0;
             width: percentage(1320/$reference_width);
             left: percentage(532/$reference_width);
             top: percentage(540/$reference_height);
@@ -203,52 +156,18 @@ section#contact{
                   width: 25%;
                 }
               }
-            }
-          }
-        }
-      }
 
-
-
-      &.faqs{
-
-        .icon{
-          position: absolute;
-
-          //////////////////
-          // TITLE
-          &.faqs_title{
-            width: percentage(840/$reference_width);
-            left: percentage(532/$reference_width);
-            top: percentage(220/$reference_height);
-          }
-
-
-          //////////////////
-          // FAQS LIST
-          &.faqs_list{
-            width: percentage(1320/$reference_width);
-            left: percentage(532/$reference_width);
-            top: percentage(500/$reference_height);
-
-            ul{
-              @include clearfix();
-
-              li{
-                float: left;
-                width: 50%;
-
-                &:nth-child(odd){
-                  padding-right: .25em
-                }
-                &:nth-child(even){
-                  padding-left: .25em
-                }
+              input[type=text]{
+                font-size: 1.8rem;
+              }
+              input[type=submit]{
+                font-size: 1.75rem;
               }
             }
           }
         }
       }
     }
+  
   }
 }

@@ -2,28 +2,19 @@
 section#about{
   color: $id_color;
   background: #fff;
+  height: auto;
 
 
   .slide{
-    width: 100vw;
-    height: 100vh;
-
-    &:nth-child(2){
-      position: absolute;
-      left: 100vw; top: 0;
-    }
-
 
 
     ////////////////////////////
     // CAPACIDAD
     ////////////////////////////
     &.capacidad{
-      .svg_holder{
-        position: absolute;
-        width: 100vw;
-      }
 
+      ///////////////////////
+      /// ICONS
       .icon{
         
         // TITULO
@@ -36,14 +27,23 @@ section#about{
         &.beneficios,
         &.mercado{
 
+          .frame2,
+          .frame4{
+            color: $id_color
+          }
+
           h3{
             padding-left: 7.5vw;
             margin: 0;
+
+            @include transition(padding-left .14s ease-in-out);
           }
           p{
             padding-left: 7.5vw;
             margin: 0;
             text-transform: none;
+
+            @include transition(padding-left .14s ease-in-out);
           }
 
           span{
@@ -54,6 +54,23 @@ section#about{
             font-size: 1.875em;
             font-weight: 500;
             letter-spacing: -.3em;
+
+            @include transition(left .14s ease-in-out);
+          }
+
+
+          // HOVER
+          &:hover{
+            h3{
+
+              padding-left: 7.75vw;
+            }
+            p{
+              padding-left: 7.75vw;
+            }
+            span{
+              left: 1.875vw;
+            }
           }
         }
 
@@ -78,14 +95,17 @@ section#about{
 
 
       .top_svg{
-        position: fixed;
-        top: 0;
-        width: 100vw
       }
       .bottom_svg{
-        position: fixed;
-        bottom: -8px;
-        width: 100vw
+        display: none;
+      }
+
+
+      .window{
+        h4{
+          color: #0081c9;
+          text-transform: uppercase;
+        }
       }
 
       .icon{
@@ -93,6 +113,10 @@ section#about{
         // TITLE
         &.title{
           color: $id_color;
+        }
+
+        .frame2{
+          color: $id_color
         }
 
 
@@ -118,6 +142,24 @@ section#about{
             font-weight: 700;
             letter-spacing: 0em;
             line-height: 0;
+
+            @include transition(left .14s ease-in-out);
+          }
+
+
+          // HOVER
+          &:hover{
+            @include transform(translateX(1vw));
+          }
+        }
+
+
+        // MEXICO
+        &.mexico{
+          cursor: pointer;
+
+          span{
+            top: 30%;
           }
         }
 
@@ -152,15 +194,31 @@ section#about{
   //---------------------------------------------------------//
   @media screen and ( min-width: $reference_desktop ){
     .slide{
+      height: 100vh;
+
+      &:nth-child(2){
+        position: absolute;
+        left: 100vw; top: 0;
+      }
 
       ////////////////////////////
       // CAPACIDAD
       ////////////////////////////
       &.capacidad{
+        .svg_holder{
+          position: absolute;
+          width: 100vw;
+        }
 
         .icon{
+          opacity: 1;
           position: absolute;
           font-size: 3.202247191vw;
+
+          .frame2,
+          .frame4{
+            p{ font-size: 1.75vw; }
+          }
           
           // TITULO
           &.title{
@@ -174,6 +232,7 @@ section#about{
             left: percentage(530/$reference_width);
             top: percentage(710/$reference_height);
             text-transform: uppercase;
+            width: 30vw;
 
             span{
               width: 5.5vw;
@@ -209,11 +268,27 @@ section#about{
       // GRUPO
       ////////////////////////////
       &.grupo{
+        .top_svg{
+          position: fixed;
+          top: 0;
+          width: 100vw
+        }
+        .bottom_svg{
+          display: block;
+          position: fixed;
+          bottom: -8px;
+          width: 100vw
+        }
 
 
         .icon{
+          opacity: 1;
           position: absolute;
           font-size: 3.202247191vw;
+
+          .frame2{
+            p{ font-size: 1.75vw; }
+          }
 
 
           // TITULO
@@ -231,13 +306,15 @@ section#about{
 
           // MEXICO
           &.mexico{
+            width: 27vw;
             padding-left: 9vw;
             left: percentage(530/$reference_width);
             top: percentage(720/$reference_height);
 
             span{
               font-size: 6.2vw;
-              margin-top: -14px;
+              margin-top: -.5em;
+              top: 60%;
             }
 
             p{

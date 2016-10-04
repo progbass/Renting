@@ -101,13 +101,13 @@ angular.module('app')
 
 
 
-              if(position.percentage >= .10){
+              if(position.percentage >= .084){
                 angular.element(el).find('.icon.personalizados').addClass('animate');
               } else {
                 angular.element(el).find('.icon.personalizados').removeClass('animate');
               }
 
-              if(position.percentage >= .15){
+              if(position.percentage >= .124){
                 angular.element(el).find('.icon.unidades').addClass('animate');
               } else {
                 angular.element(el).find('.icon.unidades').removeClass('animate');
@@ -337,12 +337,12 @@ angular.module('app')
 
           }
 
-          scope.$watch('scroll_position', function(newValue, oldValue) {
-            draw(scope.getPosition());
-          }, true);
-
+          
+          // Draw Scene
           scope.resizeSection(el);
-          scope.draw(scope.getPosition());
+          scope.$on('draw',function(event) {
+             draw(scope.getPosition());
+          });
       }
     }
 });
