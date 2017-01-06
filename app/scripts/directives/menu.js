@@ -53,12 +53,13 @@ angular.module('app')
             $(root).addClass('active');
 
             var speed =  600;
-            if($("#"+target).offset().top < $(root).offset().top)
-              speed =  300;
+            //if($("#"+target).offset().top < $(root).offset().top)
+              //speed =  300;
 
             var time_offset = 0;
             //if(target != 'home')
               //time_offset = 400;
+              //
               //
             
             // Offsets

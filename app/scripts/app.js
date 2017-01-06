@@ -30,12 +30,12 @@
         // Change Product
         scope.product = _target;
 
-        var distance_offset = $("#leasing").height()*.5;
-        if(_target == 'service')
-          distance_offset = $("#leasing").height()*.8; 
+        //var distance_offset = angular.element('#leasing').prop('offsetHeight') *.8;
+        //if(_target == 'service')
+          //distance_offset = angular.element('#leasing').prop('offsetHeight')*.8; 
 
         // Scroll To Section
-        scope.anchorScroll( angular.element('#offer'), angular.element("#leasing"), 120, distance_offset);
+        scope.anchorScroll( angular.element('#offer'), angular.element("#leasing"), 120);
       };
 
       scope.getProduct = function() {

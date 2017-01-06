@@ -39,6 +39,7 @@ section#faqs{
       //////////////////
       // TITLE
       &.faqs_title{
+        margin-bottom: 3em;
       }
 
 
@@ -50,6 +51,7 @@ section#faqs{
           @include clearfix();
           margin: 0; padding: 0; border: none;
           list-style: none;
+          letter-spacing: .01em;
 
           ////////////////
           /// QUESTION
@@ -58,13 +60,15 @@ section#faqs{
             position: relative;
             height: auto;
             border: none;
-            margin: 0 auto .5em;
+            margin: 0 auto .875em;
             padding: 0;
             cursor: pointer;
 
 
             p{
-              //font-size: 1.5vw;
+              font-size: 1.5rem;//1.5vw;
+              font-weight: 700;
+              line-height: 1.5em;
             }
 
             h4{
@@ -81,6 +85,10 @@ section#faqs{
             &.open{
               height: auto;
 
+              h4{
+                color: $id_color2;
+              }
+
               .answer{
                 display: block;
                 width: 100%;
@@ -94,8 +102,8 @@ section#faqs{
             .answer{
               @include clearfix();
               display: none;
-              background: darken($id_color, 5%);
-              padding: 1em 1em .5em;
+              background: #022857;
+              padding: 1.65em 1.5em 1.1em;
 
               p{
                 margin: 0;
@@ -180,6 +188,7 @@ section#faqs{
               
               ul{
                 margin: 0 auto;
+                list-style: disc;
 
                 li{
                   margin-bottom: 1em;
@@ -189,7 +198,7 @@ section#faqs{
             
             &.question3 .answer{
               p{
-                font-size: 3.5vw;
+                font-size: 2.875vw;
                 text-transform: uppercase;
               }
             }
@@ -197,13 +206,14 @@ section#faqs{
 
             &.question4 .answer{
               .content{
-                width: 90%;
+                @include clearfix();
+                width: 100%;
               }
 
               span{
                 position: absolute;
                 display: inline;
-                left: 0; top: -.18em;
+                left: 0; top: .12em;
                 font-size: 3vw;
                 font-weight: 700;
               }
@@ -212,14 +222,15 @@ section#faqs{
                 padding-left: 2.5vw;
                 line-height: 1.2em;
                 font-weight: normal;
+                margin-top: -.25em;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 1.24rem;
               }
               
               .column{
                 position: relative;
-                float: left;
-                width: 33%;
-                margin: 0 auto;
-                padding-right: 2em;
+                line-height: 2em;
               }
             }
           }
@@ -251,30 +262,33 @@ section#faqs{
         //////////////////
         // TITLE
         &.faqs_title{
-          margin-bottom: 3vh;
+          //margin-bottom: 3vh;
         }
 
 
         //////////////////
         // FAQS LIST
         &.faqs_list{
+          width: 73.1313131313%;
+          margin: 0;
 
           ul{
+            width: auto;
             @include clearfix();
 
             li.question{
-              float: left;
-              width: 45%;
-              padding-right: 15%;
+              //float: left;
+              //width: 45%;
+              //padding-right: 15%;
               cursor: pointer;
-              height: 7em;
-              min-height: 30%;
+              //height: 7em;
+              //min-height: 30%;
 
               @include transition(color .12s ease-out);
 
               &.open{
                 .answer{
-                  width: 250%;
+                  //width: 250%;
                 }
               }
 
@@ -283,6 +297,11 @@ section#faqs{
               }
               &:nth-child(even){
                 //padding-left: .25em
+              }
+
+
+              p{
+                font-size: 1.75rem;
               }
 
 
@@ -303,12 +322,18 @@ section#faqs{
                   margin: 0;
                   float: left;
                   width: 50%;
+                  font-size: 1.5rem;
+                  padding: 0 1em;
+
+                  p{
+                    font-size: 1.5rem;
+                  }
 
                   &:nth-child(odd){
-                    padding-left: .5em
+                    padding-left: 1.5em
                   }
                   &:nth-child(even){
-                    padding-right: .5em
+                    padding-right: 1.5em
                   }
 
                   li{
@@ -318,8 +343,20 @@ section#faqs{
               }
 
               &.question4 .answer{
+                span{
+                  top: 0;
+                }
+
                 p{
-                  font-size: 1.65vw;
+                  font-size: 1.25rem;
+                }
+
+                .column{
+                  float: left;
+                  width: 33%;
+                  margin: 0 auto;
+                  padding-right: 2.5em;
+                  line-height: 1.25em;
                 }
               }
             }

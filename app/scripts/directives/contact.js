@@ -13,8 +13,100 @@ angular.module('app')
       require: '^viewport',
       scope: true,
       templateUrl: 'views/contact.html',
+      controller: ['$scope', '$http', '$element', function($scope, $http, $el){
+        // Form initial values
+        $scope.name_txt = '';
+        $scope.mail_txt = '';
+        $scope.unidades_txt = '';
+        $scope.marca_txt = '';
+        $scope.modelo_txt = '';
+        $scope.version_txt = '';
+        $scope.equipo_txt = '';
+        $scope.comments_txt = '';
+
+        //
+        $scope.submitForm = function(status) {
+
+          var console = angular.element($el).find('.console');
+          console.removeClass('error sucess');
+
+          // Is the form valid?
+          if(!status){
+            console.addClass('error');
+
+            // Name
+            if($scope.contact_frm.name_txt.$invalid){
+              console.html('Por favor, ingresa tu nombre.');
+              return false;
+            }
+
+            // Email
+            if($scope.contact_frm.mail_txt.$invalid){
+              console.html('Ingresa una dirección de email válida.');
+              return false;
+            }
+
+            // Unidades
+            if($scope.contact_frm.unidades_txt.$invalid){
+              console.html('Ingresa el número de unidades deseadas.');
+              return false;
+            }
+
+            // Marca
+            if($scope.contact_frm.marca_txt.$invalid){
+              console.html('Ingresa la marca del vehículo.');
+              return false;
+            }
+
+            // Modelo
+            if($scope.contact_frm.modelo_txt.$invalid){
+              console.html('Ingresa el modelo del vehículo.');
+              return false;
+            }
+
+            return false;
+          }
+
+
+          var data = $.param({
+            name_txt: $scope.name_txt,
+            mail_txt: $scope.mail_txt,
+            unidades_txt: $scope.unidades_txt,
+            marca_txt: $scope.marca_txt,
+            modelo_txt: $scope.modelo_txt,
+            version_txt: $scope.version_txt,
+            equipo_txt: $scope.equipo_txt,
+            comments_txt: $scope.comments_txt
+          });
+          var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+          }
+
+          var responsePromise = $http.post("contact.php", data, config);
+          
+
+          responsePromise.success(function(data, status, headers, config) {
+              console.html(data.msg);
+
+              if(!data.err){
+                console.removeClass('error').addClass('success');
+              } else {
+                console.removeClass('success').addClass('error');
+              }
+          });
+          responsePromise.error(function(data, status, headers, config) {
+              console.removeClass('success').addClass('error');
+              console.html(data.msg);
+          });
+
+          return false;
+        }
+      }],
+
       link: function(scope, el, attrs) {
-          scope.customScroll = $window.innerWidth + 1600;
+          scope.customScroll = $window.innerWidth + 300;// + 1600;
 
           // MODAL WINDOW
           angular.element(el).find('.window').hide();

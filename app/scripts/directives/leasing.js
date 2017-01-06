@@ -13,33 +13,52 @@ angular.module('app')
       require: '^viewport',
       scope: true,
       templateUrl: 'views/leasing.html',
+
+      controllerAs: 'leasingCtrl',
       controller: ['$scope', 'appServices', function($scope, appServices){
         var controller = this;
-        controller.x_pos = 0;
+        controller.x_pos = 0; 
         
+
+        // Reposition Method. Places the module on the correct 'x' position
         controller.repositionHolder = function(_target){
+          // Initial values
           controller.x_pos = 0;
+          $scope.customScroll = 1400;
+
+          // Logo Color
+          angular.element('#main_container .logo').removeClass('color0 color1 color2');
+          angular.element('#main_container .logo').addClass('color0');
+
+          // Calculate new position according to current section
           if(_target == 'service'){
             controller.x_pos = -$window.innerWidth;
+            $scope.customScroll = 5500;
+            angular.element('#main_container .logo').addClass('color1');
           }
 
+          // Update section height
+          $scope.resizeSection();
+
+
+          // Update section position
           angular.element('#leasing .wrapper').animate({ left: controller.x_pos });
           //setVendor($('#leasing .wrapper')[0], 'transform', 'translate3d('+(controller.x_pos)+'px, 0px, 0px)' );
         }
 
+
+        // Changes Service Product
         controller.changeProduct = function(_target){
           appServices.changeProduct(_target);
         }
 
+        // Watches for changes at the current position.
         $scope.$watch(function(){ return appServices.getProduct()}, controller.repositionHolder);
       }],
 
-      controllerAs: 'leasingCtrl',
 
       link: function(scope, el, attrs) {
-          scope.customScroll = 5500;
-
-
+          scope.customScroll = 5000; //5500;
 
           var barH_1top_init = parseInt(angular.element("#leasing_1clipRight1_rect")[0].getAttribute('x'), 10);
           var barH_1bottom_init = parseInt(angular.element("#leasing_1clipRight2_rect")[0].getAttribute('x'), 10);

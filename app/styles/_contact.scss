@@ -51,6 +51,27 @@ section#contact{
             }
 
 
+            .data_holder.console{
+              clear: both;
+              display: block;
+              font-size: 1.55rem;
+              margin-top: .5em;
+              padding: .25em .75em .2em;
+              width: 100%;
+              letter-spacing: .02em;
+
+              &.error{
+                border: solid 2px #ff3333;
+                background-color: #ffaaaa;
+              }
+
+              &.success{
+                border: solid 2px #33ff33;
+                background-color: #62b97f;
+              }
+            }
+
+
             label{
               position: absolute;
               top: -9999px;
@@ -71,7 +92,9 @@ section#contact{
               }
             }
 
-            input[type=text]{
+            input[type=text],
+            input[type=number],
+            input[type=email]{
               width: 100%;
               max-width: 100%;
               padding: .5em .875em .4em;
@@ -157,7 +180,9 @@ section#contact{
                 }
               }
 
-              input[type=text]{
+              input[type=text],
+              input[type=number],
+              input[type=email]{
                 font-size: 1.8rem;
               }
               input[type=submit]{

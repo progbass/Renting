@@ -22,19 +22,47 @@
 		</div>
 
 		<div class="icon contact_form">
-		  	<form action="#" method="POST" >
+		  	<form name="contact_frm" ng-submit="submitForm(contact_frm.$valid)" novalidate>
 		  		<fieldset>
-		  			<div class="data_holder"><label for="name_txt">Nombre</label><input type="text" placeholder="Nombre"></div>
-		  			<div class="data_holder"><label for="mail_txt">E-Mail</label><input type="text" placeholder="E-Mail"></div>
-		  			<div class="data_holder half"><label for="unidades_txt"># Unidades</label><input type="text" placeholder="# Unidades"></div>
-		  			<div class="data_holder half"><label for="marca_txt">Marca</label><input type="text" placeholder="Marca"></div>
-		  			<div class="data_holder half"><label for="modelo_txt">Modelo</label><input type="text" placeholder="Modelo"></div>
-		  			<div class="data_holder half"><label for="version_txt">Versi&oacute;n</label><input type="text" placeholder="Versi&oacute;n"></div>
-		  			<div class="data_holder"><label for="equipo_txt">Equipo especial</label><input type="text" placeholder="Equipo especial"></div>
-		  			<div class="data_holder"><label for="comments_txt">M&aacute;s comentarios</label><input type="text" placeholder="M&aacute;s comentarios"></div>
+		  			<div class="data_holder">
+		  				<label for="name_txt">Nombre</label>
+		  				<input id="name_txt" name="name_txt" ng-model="name_txt" required type="text" placeholder="Nombre">
+		  			</div>
+		  			<div class="data_holder">
+		  				<label for="mail_txt">E-Mail</label>
+		  				<input id="mail_txt" name="mail_txt" ng-model="mail_txt" required type="email" placeholder="E-Mail">
+		  			</div>
+		  			<div class="data_holder half">
+		  				<label for="unidades_txt"># Unidades</label>
+		  				<input id="unidades_txt" name="unidades_txt" ng-model="unidades_txt" required min="1" max="12" type="number" placeholder="# Unidades">
+		  			</div>
+		  			<div class="data_holder half">
+		  				<label for="marca_txt">Marca</label>
+		  				<input id="marca_txt" name="marca_txt" ng-model="marca_txt" required type="text" placeholder="Marca">
+		  			</div>
+		  			<div class="data_holder half">
+		  				<label for="modelo_txt">Modelo</label>
+		  				<input id="modelo_txt" name="modelo_txt" ng-model="modelo_txt" required ng-minlength="4" ng-maxlength="4" min="1990" type="number" placeholder="Modelo">
+		  			</div>
+		  			<div class="data_holder half">
+		  				<label for="version_txt">Versi&oacute;n</label>
+		  				<input id="version_txt" name="version_txt" ng-model="version_txt" ng-maxlength="10" type="text" placeholder="Versi&oacute;n">
+		  			</div>
+		  			<div class="data_holder">
+		  				<label for="equipo_txt">Equipo especial</label>
+		  				<input id="equipo_txt" name="equipo_txt" ng-model="equipo_txt" type="text" placeholder="Equipo especial">
+		  			</div>
+		  			<div class="data_holder">
+		  				<label for="comments_txt">M&aacute;s comentarios</label>
+		  				<input id="comments_txt" name="comments_txt" ng-model="comments_txt" type="text" placeholder="M&aacute;s comentarios">
+		  			</div>
 
 
-		  			<div class="data_holder"><input type="submit" value="Enviar"></div>
+		  			<div class="data_holder">
+		  				<input type="submit" value="Enviar" ng-disabled="contact_frma.$invalid">
+		  			</div>
+
+		  			<div class="data_holder console"></div>
 		  		</fieldset>
 		  	</form>
 		</div>
